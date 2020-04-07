@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+  <!-- BS CSS CDN -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+       
+         <!-- IMPORTANT PART -->
+     
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script> 
+
+</head>
+<body>
+        <div class="chart" style="position: relative; height:80vh; width:100vw">
+                <canvas id="myChart"></canvas>
+              </div>
+
+    <!-- ChartJS 2 -->
+<script>
+        function BuildChart(labels, values, chartTitle) {
+          var data = {
+            labels: labels,
+            datasets: [{
+              label: chartTitle, // Name the series
+              data: values,
+              backgroundColor: ['rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+                'rgb(54, 162, 235)',
+              ],
+            }],
+          };
+        
+          var ctx = document.getElementById("myChart").getContext('2d');
+          var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+              responsive: true, // Instruct chart js to respond nicely.
+              maintainAspectRatio: false, // Add to prevent default behavior of full-width/height 
+              scales: {
+                xAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Date'
+                  }
+                }],
+                yAxes: [{
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Produced Count'
+                  }
+                }]
+              },
+            }
+          });
+        
+          return myChart;
+        }
+        </script>
+
+          <script>
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                  if (this.readyState == 4 && this.status == 200) {
+                    var json = JSON.parse(this.response);
+                    console.log(json);
+                
+                  // Map JSON labels  back to values array
+                  var labels = json.feed.entry.map(function (e) {
+                    return e.gsx$timestamp.$t;
+                  });
+                      
+                  // Map JSON values back to values array
+                  var values = json.feed.entry.map(function (e) {
+                    return e.gsx$name.$t;
+                  });
+                
+                  BuildChart(labels, values, "Production Data");
+                  }
+                };
+                xhttp.open("GET", "https://spreadsheets.google.com/feeds/list/17t52XqmKkfo8js1gVzy2penw71c6jBAklofqDydMzg0/od6/public/values?alt=json", false);
+                xhttp.send();
+                </script>
+
+                <!-- https://spreadsheets.google.com/feeds/list/1aFFwrsRmdt5Lv-c2eoWzWfsJ1N5Fiqvzk1Bb6ZhZUsE/1/public/full?alt=json -->
+                <!-- https://spreadsheets.google.com/feeds/cells/1aFFwrsRmdt5Lv-c2eoWzWfsJ1N5Fiqvzk1Bb6ZhZUsE/1/public/full?alt=json -->
+
+        
+      
+    
+</body>
+</html>

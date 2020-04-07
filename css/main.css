@@ -1,0 +1,88 @@
+/***************************
+    Site Design CSS
+***************************/
+
+#box {
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+  padding: 2em;
+  color: #333;
+  text-align: center;
+  overflow: visible;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 3em;
+  line-height: 1.3em;
+  letter-spacing: -4px;
+  margin: 0.8rem 0 0 0;
+  padding-bottom: 5px;
+}
+
+p.small {
+  font-size: 2em;
+  color: red;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #333;
+  font-weight: 600;
+}
+
+
+/***************************
+    Google Table CSS
+***************************/
+
+/* Table rows style for even */
+.google-visualization-table-tr-even,
+.google-visualization-table-tr-even td,
+.google-visualization-table-tr-even-nonstrict {
+  background-color: #fff !important;
+  color: #333 !important;
+}
+
+/* Table rows style for odd */
+.google-visualization-table-tr-odd,
+.google-visualization-table-tr-odd td,
+.google-visualization-table-tr-odd-nonstrict {
+  background-color: #fff !important;
+  color: #333 !important;
+}
+
+/* Hover effect at table rows */
+.google-visualization-table-tr-over,
+.google-visualization-table-tr-over td,
+.google-visualization-table-tr-over-nonstrict {
+  background-color: #333 !important;
+  color: #fff !important;
+}
+
+/* Table Border */
+.google-visualization-table-td,
+.google-visualization-table-th {
+  border: 1px solid #333 !important;
+  color: #fff !important;
+}
+
+/* Table Head */
+.google-visualization-table-tr-head,
+.google-visualization-table-tr-head td,
+.google-visualization-table-tr-head-nonstrict {
+  background-color: #333 !important;
+  background-image: none !important;
+  color: #fff !important;
+}
+
+/* Table Head Gradient none! */
+ .google-visualization-table .gradient {
+  background-image: none !important;
+} 
